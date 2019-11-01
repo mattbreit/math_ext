@@ -30,21 +30,21 @@ def prime_factors(n):
 
 
 def test_prime_factors():
-    assert(prime_factors(1) == (1,))
-    assert(prime_factors(2) == (2,))
-    assert(prime_factors(3) == (3,))
-    assert(prime_factors(4) == (2, 2))
-    assert(prime_factors(5) == (5,))
-    assert(prime_factors(6) == (2, 3))
-    assert(prime_factors(7) == (7,))
-    assert(prime_factors(8) == (2, 2, 2))
-    assert(prime_factors(9) == (3, 3))
-    assert(prime_factors(10) == (2, 5))
-    assert(prime_factors(210) == (2, 3, 5, 7))
-    assert(prime_factors(1024) == (2, 2, 2, 2, 2, 2, 2, 2, 2, 2))
-    assert(prime_factors(2310) == (2, 3, 5, 7, 11))
-    assert(prime_factors(2019) == (3, 673))
-    assert(prime_factors(2020) == (2, 2, 5, 101))
+    assert prime_factors(1) == (1,)
+    assert prime_factors(2) == (2,)
+    assert prime_factors(3) == (3,)
+    assert prime_factors(4) == (2, 2)
+    assert prime_factors(5) == (5,)
+    assert prime_factors(6) == (2, 3)
+    assert prime_factors(7) == (7,)
+    assert prime_factors(8) == (2, 2, 2)
+    assert prime_factors(9) == (3, 3)
+    assert prime_factors(10) == (2, 5)
+    assert prime_factors(210) == (2, 3, 5, 7)
+    assert prime_factors(1024) == (2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
+    assert prime_factors(2310) == (2, 3, 5, 7, 11)
+    assert prime_factors(2019) == (3, 673)
+    assert prime_factors(2020) == (2, 2, 5, 101)
 
 
 def intify(n):
@@ -71,13 +71,13 @@ def triangular(n):
 
 
 def test_triangular():
-    assert(triangular(3) == 6)
-    assert(triangular(5) == 15)
-    assert(triangular(6) == 21)
-    assert(triangular(8) == 36)
-    assert(triangular(36) == 666)
-    assert(triangular(66) == 2211)
-    assert(triangular(666) == 222111)
+    assert triangular(3) == 6
+    assert triangular(5) == 15
+    assert triangular(6) == 21
+    assert triangular(8) == 36
+    assert triangular(36) == 666
+    assert triangular(66) == 2211
+    assert triangular(666) == 222111
 
 
 def triangular_root(n):
@@ -85,14 +85,14 @@ def triangular_root(n):
 
 
 def test_triangular_root():
-    assert(triangular_root(6) == 3)
-    assert(triangular_root(15) == 5)
-    assert(triangular_root(21) == 6)
-    assert(triangular_root(36) == 8)
-    assert(triangular_root(666) == 36)
-    assert(triangular_root(888) == 41.64558102577303)
-    assert(triangular_root(2211) == 66)
-    assert(triangular_root(222111) == 666)
+    assert triangular_root(6) == 3
+    assert triangular_root(15) == 5
+    assert triangular_root(21) == 6
+    assert triangular_root(36) == 8
+    assert triangular_root(666) == 36
+    assert triangular_root(888) == 41.64558102577303
+    assert triangular_root(2211) == 66
+    assert triangular_root(222111) == 666
 
 
 def triads(n, m):
@@ -136,7 +136,7 @@ def hcf(numbers):
 
 
 def test_hcf():
-    assert(hcf([60,80,100]) == 20)
+    assert hcf([60,80,100]) == 20
 
 
 def product(numbers):
@@ -148,7 +148,7 @@ def lcm(numbers):
 
 
 def test_lcm():
-    assert(lcm([6,8,12]) == 24)
+    assert lcm([6,8,12]) == 24
 
 
 def convert_base(value, base):
@@ -170,7 +170,7 @@ def convert_base(value, base):
 
 
 def test_convert_base():
-    assert(convert_base(666, 60) == [(11,1),(6,0)])
+    assert convert_base(666, 60) == [(11,1),(6,0)]
 
     # this is not true pi base 60, but the truncated math.pi, which only has
     # about 15 digits, converted to base 60, which will have a lot more digits,
@@ -195,7 +195,7 @@ def fibonacci(n):
 
 
 def digits(n):
-    assert(n>=0)
+    assert n >= 0
     digits = []
     while n > 0:
         digits.insert(0, n % 10)
@@ -223,3 +223,13 @@ def test_trace_profile():
     sys.setprofile(_trace_profile)
     print(prime_factors(6))
     sys.setprofile(None)
+
+
+def primes(max):
+    nums = list(range(1,max+1))
+    for n in range(2, int(math.sqrt(max))):
+        for m in range(n, max):
+            p = m * n
+            if p in nums:
+                nums.remove(p)
+    return nums
